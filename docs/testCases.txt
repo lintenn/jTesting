@@ -1,0 +1,36 @@
+Test cases:
+ getType 3 3 4 -> ISOSCELES *
+ getType 4 3 3 -> ISOSCELES *
+ getType 3 4 3 -> ISOSCELES *
+ getType 2 3 4 -> SCALENE *
+ getType 2.5 3.5 5.5 -> SCALENE *
+ getType 4 4 4 -> EQUILATERAL *
+ getType 1 2 3 -> Exception (invalid triangle) *
+ getType 1 3 2 -> Exception (invalid triangle) *
+ getType 3 1 2 -> Exception (invalid triangle) *
+ getType 2 10 5 -> Exception (invalid triangle) *
+ getType 2 5 10 -> Exception (invalid triangle) *
+ getType 10 2 5 -> Exception (invalid triangle) *
+ getType 0 0 0 -> Exception (zero values) *
+ getType 3 3 0 -> Exception (zero value) *
+ getType -1 3 3 -> Exception (negative value) *
+
+shouldGetTypeReturnISOSCELESIfTheLengthsAreThreeThreeFour(): Un triángulo con lados que miden 3, 3 y 4 debe ser isósceles.
+shouldGetTypeReturnISOSCELESIfTheLengthsAreFourThreeThree(): Un triángulo con lados que miden 4, 3 y 3 debe ser isósceles. (Probamos permutaciones)
+shouldGetTypeReturnISOSCELESIfTheLengthsAreThreeFourThree(): Un triángulo con lados que miden 3, 4 y 3 debe ser isósceles.
+shouldGetTypeReturnSCALENEIfTheLengthsAreTwoThreeFour(): Un triángulo con lados que miden 2, 3 y 4 debe ser escaleno.
+shouldGetTypeReturnSCALENEIfTheLengthsAreTwoPointFiveThreePointFiveFivePointFive(): Un triángulo con lados que miden 2.5, 3.5 y 5.5 debe ser escaleno.
+shouldGetTypeReturnEQUILATERALIfTheLengthsAreFourFourFour(): Un triángulo con lados que miden 4, 4 y 4 debe ser equilátero.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreOneTwoThree(): Un triángulo con lados que miden 1, 2 y 3 es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreOneThreeTwo(): Un triángulo con lados que miden 1, 3 y 2 es inválido. (Probamos permutaciones)
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreThreeOneTwo(): Un triángulo con lados que miden 3, 1 y 2 es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreTwoTenFive(): Un triángulo con lados que miden 2, 5 y 10 es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreTwoFiveTen(): Un triángulo con lados que miden 2, 5 y 10 es inválido. (Probamos permutaciones)
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreTenTwoFive(): Un triángulo con lados que miden 10, 2 y 5 es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreZeroZeroZero(): Un triángulo con lados nulos es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreThreeThreeZero(): Un triángulo con algún lado a cero es inválido.
+shouldGetTypeRaiseAnExceptionIfTheLengthsAreNegativeOneThreeThree(): Un triángulo con algún lado negativo es inválido.
+
+*ACLARACIÓN DE LA ENTREGA*: Al intentar pasar los tests de la implementación 2 desde mi IntelliJ me da problemas ya que cree el proyecto en la versión 13
+y requiere la versión 14. He intentado hacer los cambios para que mi IDE lo compile pero no me ha sido posible arreglarlo, sin embargo, en la captura
+se ve que si hacemos un "mvn test" pasan los tests para la implementación 2 correctamente.

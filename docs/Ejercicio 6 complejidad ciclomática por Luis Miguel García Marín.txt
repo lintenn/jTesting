@@ -1,0 +1,4 @@
+Grado de complejidad = 6.
+Las fórmulas presentadas en Wikipedia son más completas, y teniendo en cuenta que el lanzar una excepción en los Check.notNull() de la clase del ejercicio propuesto puede considerarse como un nodo de salida distinto a acabar en el return, tendríamos en este caso más de un nodo de salida. Y lo mejor es que, teniendo en cuenta las fórmulas de Wikipedia (V(G) = |P| + nº salidas y V(G) = A – N + 2 * nº de salidas), obtengo ahora la misma complejidad ciclomática en ambas fórmulas que si lo hago con las de las transparencias (lo cual no tiene sentido, ya que ambas fórmulas deberían dar la misma complejidad ciclomática).
+
+En mi caso considero 1 nodo excepción al que podrían dirigirse las sentencias Check.notNull(x) y Check.notNull(y), y de esta forma me sale una complejidad ciclomática de 6 en ambas fórmulas. Si considero 2 nodos excepción, me sale una complejidad ciclomática de 7 en ambas fórmulas.

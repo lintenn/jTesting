@@ -1,0 +1,37 @@
+Ejercicio 2: Anotaciones y asertos en jUnit 5. 
+Por Luis Miguel García Marín
+
+- Elige una anotación y un aserto que no conocieses previamente e indica qué utilidad les ves.
+
+He elegido la anotación @Disabled, el cual nos permite desactivar un test para cuando pasemos todos los tests
+de una clase de tests. Esto puede ser muy útil si alguno de nuestros tests aún está en construcción o 
+no queremos probarlo en este momento por si tenemos conflicto con alguno de nuestros otros tests que sí
+queremos pasar. También existen variantes de esta notación para deshabilitar tests en determinados 
+sistemas operativos, por si no nos es posible ejecutarlos correctamente en ciertos sistemas operativos. 
+
+Como aserto he elegido assertTimeout, el cual nos permite verificar que la ejecución de algún método o serie
+de métodos que queramos probar se realiza en menos de un tiempo determinado. Es un aserto muy útil para
+comprobar la complejidad temporal de nuestras funciones.
+
+- Aplícalos a la clase FactorialTest y comenta las ventajas de usarlos.
+
+    @Disabled
+    public void shouldTestSomethingInTheFuture() {
+        int expectedValue;
+        int obtainedValue;
+    }
+
+Podemos aprovechar @Disabled para inhabilitar la ejecución de un test en nuestra clase FactorialTest que
+aún se encuentra en construcción. Como queremos poder pasar todos los tests de la clase sin tener que
+borrar ni comentar código, nos es muy útil, con una simple anotación el test es ignorado y podemos 
+pasar el resto de tests.
+
+    @Test
+    public void shouldComputeCalculateValueInLessThan10Seconds() {
+
+        assertTimeout(Duration.ofSeconds(10), () -> factorial.compute(100));
+    }
+
+El aserto assertTimeout puede sernos muy beneficioso para asegurar que nuestra clase Factorial es capaz
+de computar el factorial de argumentos grandes en un tiempo razonable. Por ejemplo, que sea capaz de
+computar el factorial de 100 antes de que pasen 10 segundos.

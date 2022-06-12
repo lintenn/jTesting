@@ -1,0 +1,17 @@
+Un primer intento podría ser intentar incrementar el tamaño de la pila para nuestro programa en las opciones de compilación,
+aunque en el caso de Java es algo más complejo porque depende de la máquina virtual de Java. 
+
+Otro intento podría ser tratar de realizar recursiones de cola ("tail recursion"), que consisten en que la llamada de la
+función a sí misma ocurra como la última acción de la función. Haciendo este pequeño cambio se ensamblará la 
+llamada a función como una simple instrucción "jump" en ensamblador y no como una típica instrucción "call" que almacenaría 
+un nuevo StackFrame en la pila por cada llamada. Sin embargo, nos encontramos con que la optimización de recursión de cola 
+en Java depende de la implementación de la JVM (y por lo que he leído no la suele aplicar).
+
+Una solución más general podría ser limitar las llamadas recursivas hasta un número máximo establecido que no sobrepase
+el límite de la pila con un contador como menciona también el compañero Galo. Aunque podría ser provechoso que cuando se llegue
+a este límite, se devuelva en un objeto o estructura el resultado intermedio calculado hasta ahora y el parámetro que la 
+función recursiva le hubiese pasado a la siguiente llamada para continuar su recursión de no ser porque el contador llegó
+al límite. De esta forma el usuario que realizó la primera llamada puede tomar el parámetro que no se llegó a computar 
+recursivamente y comenzar la recursión nuevamente con él, lo que permite que la función recursiva continúe el cálculo donde
+lo dejó, ya que tanto el contador como la pila volverían al punto inicial. Una vez calculado el resto, se podría 
+operar con el resultado intermedio que se obtuvo anteriormente y así tener el resultado total. 
